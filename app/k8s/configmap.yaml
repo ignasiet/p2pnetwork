@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-server1
+data:
+  WEBSERVER_HOST: '0.0.0.0'
+  WEBSERVER_PORT: '8080'
+  SLEEP_TIME: "5"
+  DELAY_START: "1"
+  KNOWN_HOSTS: "['sv-server2','sv-server5','sv-server8']"

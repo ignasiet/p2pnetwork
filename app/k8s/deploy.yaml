@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-server1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-server1
+  template:
+    metadata:
+      labels:
+        app: deploy-server1
+    spec:
+      containers:
+        - name: server-bc
+          image: server/bc
+          ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP 
+          imagePullPolicy: Never
+          envFrom:
+            - configMapRef:
+                name: cm-server1
+          resources:
+            requests:
+              memory: 30Mi
+              cpu: 25m
+            limits:
+              memory: 50Mi
+              cpu: 50m
